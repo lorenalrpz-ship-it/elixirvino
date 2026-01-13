@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Berry – Vino Artesanal</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>Elixir</h1>
+            <p>Vino artesanal de mora del Chimborazo</p>
+            <a href="#moras" class="btn">Descubrir</a>
+        </div>
+    </section>
+
+    <!-- MORAS -->
+    <section class="section reveal" id="moras">
+        <img src="img/moras.jpg" alt="Moras andinas">
+        <div class="text">
+            <h2>Moras andinas</h2>
+            <p>
+                Cultivadas en la región andina del Ecuador, nuestras moras aportan
+                un sabor profundo y natural que define el carácter de Black Berry.
+            </p>
+        </div>
+    </section>
+
+    <!-- ANDES (invertido) -->
+    <section class="section reverse reveal">
+        <div class="text">
+            <h2>Origen Chimborazo</h2>
+            <p>
+                La altura, el clima y la tradición agrícola del Chimborazo se reflejan
+                en un vino gourmet con identidad local y esencia artesanal.
+            </p>
+        </div>
+        <img src="img/andes.jpg" alt="Zona andina del Ecuador">
+    </section>
+
+    <!-- PERFIL DEL VINO -->
+    <section class="perfil reveal">
+        <h2>Perfil del vino</h2>
+
+        <div class="slider">
+            <div class="slider-track">
+
+                <div class="slide">
+                    <img src="img/aroma.jpg" alt="Aroma del vino">
+                    <div class="slide-text">
+                        <h3>Aroma</h3>
+                        <p>Frutal y suave, con notas naturales de mora fresca.</p>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <img src="img/sabor.jpg" alt="Sabor del vino">
+                    <div class="slide-text">
+                        <h3>Sabor</h3>
+                        <p>Equilibrado, ligeramente dulce y elegante al paladar.</p>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <img src="img/color.jpg" alt="Color del vino">
+                    <div class="slide-text">
+                        <h3>Color</h3>
+                        <p>Profundo e intenso, reflejo de su origen artesanal.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CTA -->
+    <section class="cta reveal">
+        <h2>Una experiencia artesanal en cada copa</h2>
+        <a 
+            href="https://wa.me/59168301286?text=Hola%20me%20gustaría%20recibir%20más%20información%20sobre%20el%20vino%20Elixir"
+            class="btn btn-primary"
+            target="_blank"
+            >
+            Pedir por WhatsApp
+        </a>
+
+    </section>
+    
+    <!-- SLIDER SCRIPT -->
+    <script>
+        const track = document.querySelector('.slider-track');
+        const slides = document.querySelectorAll('.slide');
+
+        let index = 0;
+        const interval = 4000;
+
+        setInterval(() => {
+            index = (index + 1) % slides.length;
+            track.style.transform = `translateX(-${index * 100}%)`;
+        }, interval);
+    </script>
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+
+    const revealOnScroll = () => {
+        reveals.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+            const triggerPoint = window.innerHeight * 0.85;
+
+            if (sectionTop < triggerPoint) {
+                section.classList.add('active');
+            }
+        });
+    };
+
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+</script>
+
+
+
+</body>
+</html>
